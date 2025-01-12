@@ -1,20 +1,22 @@
 
 .navbar{
     width: 100%;
-    height: 80px;
+    height: 60px;
     display: flex;
     flex-direction: row;
-    justify-content: right;
+    justify-content: space-between;
     align-items: center;
+    box-sizing: border-box;
+    padding: 0px 10px;
 
     .navbarButtons{
-        width: 40vw;
+        width: 30vw;
         height: 100%;
         padding: 5px;
         box-sizing: border-box;
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: space-between;
         align-items: center;
     }
 }
@@ -24,6 +26,7 @@
     color: wheat;
     text-decoration: none;
     transition: all .4s ;
+    cursor: pointer;
 
     text-transform: uppercase;
 }
@@ -32,5 +35,6 @@
 }
 .activeNavLink{
     color: #747bff;
-    text-shadow: 0px 5px 10px 10px black;
+    box-shadow: 0px 2px 0px 0px wheat;
+
 }

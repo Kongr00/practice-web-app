@@ -11,10 +11,10 @@ const NavbarLink: FC<NavbarLinkProps> = ({to, children}) => {
     return (
         <NavLink
             to={to}
-            className={`    
-                ${(isActive) => (isActive ? cls.activeNavLink : '')}
-                ${cls.navLink} 
-            `}>
+            className={({isActive}) =>
+                `${cls.navLink} ${isActive ? cls.activeNavLink : ''}`
+            }
+        >
             {children}
         </NavLink>
     );
