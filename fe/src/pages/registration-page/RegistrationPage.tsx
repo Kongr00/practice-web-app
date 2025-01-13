@@ -26,6 +26,8 @@ const RegistrationPage = () => {
         console.log(userInfo)
 
         //give a token or smth like that
+
+
     }
 
     const changeInputHandler = (event) => {
