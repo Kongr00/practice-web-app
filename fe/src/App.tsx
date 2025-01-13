@@ -21,7 +21,6 @@ function App() {
                    <Route path={'category/:category'} element={<CategoryPage/>} />
                    <Route path={'news/:id'} element={<NewsPage/>} />
                </Route>
-
                <Route path={'/login'} element={<LoginPage/>} />
                <Route path={'/register'} element={<RegistrationPage/>} />
            </Routes>
