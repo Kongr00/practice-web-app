@@ -2,16 +2,20 @@ import {useEffect, useState} from 'react';
 import {NavLink} from "react-router-dom";
 import cls from './navbar.module.css'
 import NavbarLink from "./navbar-components/NavbarLink.tsx";
+import {useAuth} from "../../context/AuthContext.tsx";
 const Navbar = () => {
-    const categories = ['music', 'celebrities', 'medicine', 'sport'];
-    const [pickedCategory, setPickedCategory] = useState('sport');
 
+    const [pickedCategory, setPickedCategory] = useState('sport');
+    const {logout} = useAuth()
+
+    const categories = ['music', 'celebrities', 'medicine', 'sport'];
 
     const randomizeCategory = () => {
         setPickedCategory(categories[Math.floor(Math.random() * 4)])
     }
     const exitHandler = () => {
         //some exit logic
+        logout();
         console.log("EXITED")
     }
 

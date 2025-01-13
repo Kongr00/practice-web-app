@@ -1,15 +1,16 @@
 import {Navigate, Outlet} from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar.tsx";
+import {useAuth} from "../../context/AuthContext.tsx";
 
 const PrivateRoute = () => {
 
     //=============== here must be some logic about verify jwt token ===============
-    const auth = true;
+    const {isAuthenticated} = useAuth();
     //=============== here must be some logic about verify jwt token ===============
 
 
     return (
-        auth
+        isAuthenticated
             ? <div style={{display: 'flex', flexDirection: "column"}}>
                 <Navbar/>
                 <div style={{textAlign: 'center'}}>
