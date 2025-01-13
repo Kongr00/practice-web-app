@@ -23,6 +23,7 @@ import {User} from "./user/user.model";
           password: process.env.POSTGRES_PASSWORD,
           database: process.env.POSTGRES_DATABASE,
           models: [User],
+          autoLoadModels: true,
       }),
   ],
   controllers: [AppController],
