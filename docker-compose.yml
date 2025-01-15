@@ -14,18 +14,18 @@ services:
       networks:
         rnp-net:
 
-    fe:
-      container_name: ${PROJECT_NAME}-fe
-      build:
-        context: ./fe
-        dockerfile: Dockerfile
-      command: npm run dev
-      restart: unless-stopped
-      volumes:
-        - ./fe:/usr/fe
-        - /usr/fe/node_modules
-      networks:
-        rnp-net:
+#    fe:
+#      container_name: ${PROJECT_NAME}-fe
+#      build:
+#        context: ./fe
+#        dockerfile: Dockerfile
+#      command: npm run dev
+#      restart: unless-stopped
+#      volumes:
+#        - ./fe:/usr/fe
+#        - /usr/fe/node_modules
+#      networks:
+#        rnp-net:
 
 #    be:
 #      container_name: ${PROJECT_NAME}-be
