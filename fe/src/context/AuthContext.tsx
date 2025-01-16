@@ -31,12 +31,15 @@ export const AuthProvider = ({children}) => {
         const token = localStorage.getItem('token');
         if (token) {
             axios.get('/api/user', { headers: getAuthHeader() })
-                .then(() => console.log('User is authenticated'))
+                .then(() => {
+                    setIsAuthenticated(true)
+                    navigate('home')
+                })
                 .catch(() => {
                     localStorage.removeItem('token');
                     console.log('Token expired, please log in again');
                 });
-            navigate('home')
+
         }
     }, []);
 
