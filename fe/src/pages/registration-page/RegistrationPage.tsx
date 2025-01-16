@@ -3,9 +3,10 @@ import cls from './registrationPage.module.css'
 import {useState} from "react";
 import DefaultInput, {InputVariant} from "../../components/DefaultInput/DefaultInput.tsx";
 import DefaultButton, {DefaultButtonVariant} from "../../components/DefaultButton/DefaultButton.tsx";
+import {useAuth} from "../../context/AuthContext.tsx";
 
 
-interface UserInfoFields {
+interface RegistrationInfoFields {
     username: string;
     email: string;
     password: string;
@@ -15,18 +16,20 @@ interface UserInfoFields {
 
 const RegistrationPage = () => {
 
-    const [userInfo, setUserInfo] = useState<UserInfoFields>({
+    const [userInfo, setUserInfo] = useState<RegistrationInfoFields>({
         username: "",
         email: "",
         password: "",
         repeatPassword: "",
         sex: false,
     })
+    const {login} = useAuth();
+
 
     const submitHandler = (event) => {
         event.preventDefault()
-        console.log(userInfo)
-
+        // console.log(userInfo)
+        login()
         //give a token or smth like that
 
 
@@ -77,9 +80,7 @@ const RegistrationPage = () => {
                         <option value="false">Female</option>
                     </select>
 
-                    <DefaultButton
-                        type={DefaultButtonVariant.SUBMIT}
-                        >SUBMIT</DefaultButton>
+                    <DefaultButton type={DefaultButtonVariant.SUBMIT}>SIGN UP</DefaultButton>
                 </form>
                 <div className={cls.toLoginPage}>
                     <p>Already have an account?</p>
