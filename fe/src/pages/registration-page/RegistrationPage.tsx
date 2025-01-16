@@ -1,6 +1,7 @@
 import {Link} from "react-router-dom";
 import cls from './registrationPage.module.css'
 import {useState} from "react";
+import DefaultInput, {InputVariant} from "../../components/DefaultInput/DefaultInput.tsx";
 
 
 interface UserInfoFields {
@@ -31,6 +32,7 @@ const RegistrationPage = () => {
     }
 
     const changeInputHandler = (event) => {
+        console.log('pressed from' + event.target.value)
        setUserInfo({
            ...userInfo,
             [event.target.name]: event.target.value
@@ -41,11 +43,32 @@ const RegistrationPage = () => {
         <div className={cls.container}>
             <div>
                 <form action="" onSubmit={submitHandler} className={cls.registerForm}>
-                    <input type="text" name={"username"} value={userInfo?.username} onChange={changeInputHandler}/>
-                    <input type="email" name={"email"} value={userInfo?.email} onChange={changeInputHandler}/>
+                    <DefaultInput
+                        type={InputVariant.TEXT}
+                        name={"username"}
+                        value={userInfo?.username}
+                        onChange={changeInputHandler}
+                        placeholder={"Enter the name"}/>
+                    <DefaultInput
+                        type={InputVariant.EMAIL}
+                        name={"email"}
+                        value={userInfo?.email}
+                        onChange={changeInputHandler}
+                        placeholder={"test-email@gmail.com"}/>
                     <div className={cls.passwordBlock}>
-                        <input type="password" name={"password"} value={userInfo?.password} onChange={changeInputHandler}/>
-                        <input type="password" name={"repeatPassword"} value={userInfo?.repeatPassword} onChange={changeInputHandler}/>
+                        <DefaultInput
+                            type={InputVariant.PASSWORD}
+                            name={"password"}
+                            value={userInfo?.password}
+                            onChange={changeInputHandler}
+                            placeholder={"password..."}
+                           />
+                        <DefaultInput
+                            type={InputVariant.PASSWORD}
+                            name={"repeatPassword"}
+                            value={userInfo?.repeatPassword}
+                            onChange={changeInputHandler}
+                            placeholder={"repeat the password..."}/>
                     </div>
                     <select name="sex" id="sex" value={userInfo?.sex.toString()} onChange={changeInputHandler}>
                         <option value="true">Male</option>
@@ -55,7 +78,9 @@ const RegistrationPage = () => {
                     <button type={'submit'}>SUBMIT</button>
                 </form>
             </div>
-            <Link to={'/login'}>LOG IN</Link>
+            <div>
+                <Link to={'/login'}>LOG IN</Link>
+            </div>
         </div>
     );
 };

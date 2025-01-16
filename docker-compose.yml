@@ -14,34 +14,34 @@ services:
       networks:
         rnp-net:
 
-    fe:
-      container_name: ${PROJECT_NAME}-fe
-      build:
-        context: ./fe
-        dockerfile: Dockerfile
-      command: npm run dev
-      restart: unless-stopped
-      volumes:
-        - ./fe:/usr/fe
-        - /usr/fe/node_modules
-      networks:
-        rnp-net:
+#    fe:
+#      container_name: ${PROJECT_NAME}-fe
+#      build:
+#        context: ./fe
+#        dockerfile: Dockerfile
+#      command: npm run dev
+#      restart: unless-stopped
+#      volumes:
+#        - ./fe:/usr/fe
+#        - /usr/fe/node_modules
+#      networks:
+#        rnp-net:
 
-    be:
-      container_name: ${PROJECT_NAME}-be
-      build:
-        context: ./be
-        dockerfile: Dockerfile
-      command: npm run start:dev
-      restart: unless-stopped
-      volumes:
-        - ./be:/usr/be
-        - /usr/be/node_modules
-      environment:
-        NODE_ENV: dev
-        POSTGRES_URL: ${POSTGRES_URL}
-      networks:
-        rnp-net:
+#    be:
+#      container_name: ${PROJECT_NAME}-be
+#      build:
+#        context: ./be
+#        dockerfile: Dockerfile
+#      command: npm run start:dev
+#      restart: unless-stopped
+#      volumes:
+#        - ./be:/usr/be
+#        - /usr/be/node_modules
+#      environment:
+#        NODE_ENV: dev
+#        POSTGRES_URL: ${POSTGRES_URL}
+#      networks:
+#        rnp-net:
 
     postgres:
       container_name: ${PROJECT_NAME}-db
