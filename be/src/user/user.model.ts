@@ -8,7 +8,7 @@ interface UserCreationAttrs {
     sex: boolean;
 }
 
-@Table({tableName: "user"})
+@Table({tableName: "user", createdAt: false, updatedAt: false})
 export class User extends Model<User, UserCreationAttrs> {
     @Column({type: DataType.INTEGER, unique: true, autoIncrement: true, primaryKey: true})
     id: number;

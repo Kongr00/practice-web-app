@@ -1,14 +1,13 @@
-import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import {Module} from '@nestjs/common';
 import {ConfigModule} from "@nestjs/config";
-import { UserModule } from './user/user.module';
-import { PostModule } from './post/post.module';
-import { RolesModule } from './roles/roles.module';
-import { DatabaseModule } from './database/database.module';
+import {UserModule} from './user/user.module';
+import {PostModule} from './post/post.module';
+import {RolesModule} from './roles/roles.module';
 import {SequelizeModule} from "@nestjs/sequelize";
 import * as process from "process";
 import {User} from "./user/user.model";
+import { AuthModule } from './auth/auth.module';
+
 @Module({
   imports: [
       ConfigModule.forRoot(),
@@ -25,8 +24,9 @@ import {User} from "./user/user.model";
           models: [User],
           autoLoadModels: true,
       }),
+      AuthModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}
