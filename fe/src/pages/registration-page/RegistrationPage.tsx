@@ -2,6 +2,7 @@ import {Link} from "react-router-dom";
 import cls from './registrationPage.module.css'
 import {useState} from "react";
 import DefaultInput, {InputVariant} from "../../components/DefaultInput/DefaultInput.tsx";
+import DefaultButton, {DefaultButtonVariant} from "../../components/DefaultButton/DefaultButton.tsx";
 
 
 interface UserInfoFields {
@@ -68,19 +69,24 @@ const RegistrationPage = () => {
                             name={"repeatPassword"}
                             value={userInfo?.repeatPassword}
                             onChange={changeInputHandler}
-                            placeholder={"repeat the password..."}/>
+                            placeholder={"repeat the password..."}
+                            />
                     </div>
                     <select name="sex" id="sex" value={userInfo?.sex.toString()} onChange={changeInputHandler}>
                         <option value="true">Male</option>
                         <option value="false">Female</option>
                     </select>
 
-                    <button type={'submit'}>SUBMIT</button>
+                    <DefaultButton
+                        type={DefaultButtonVariant.SUBMIT}
+                        >SUBMIT</DefaultButton>
                 </form>
+                <div className={cls.toLoginPage}>
+                    <p>Already have an account?</p>
+                    <Link to={'/login'}>LOG IN</Link>
+                </div>
             </div>
-            <div>
-                <Link to={'/login'}>LOG IN</Link>
-            </div>
+
         </div>
     );
 };

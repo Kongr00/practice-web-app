@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import {FC} from 'react';
 import cls from './DefaultInput.module.css'
 export enum InputVariant {
     TEXT = 'text',
