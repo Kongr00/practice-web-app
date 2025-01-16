@@ -23,16 +23,12 @@ const RegistrationPage = () => {
         repeatPassword: "",
         sex: false,
     })
-    const {login} = useAuth();
-
+    const {register} = useAuth();
 
     const submitHandler = (event) => {
         event.preventDefault()
-        // console.log(userInfo)
-        login()
-        //give a token or smth like that
-
-
+        const {repeatPassword, ...registerData} = userInfo;
+        register(registerData)
     }
 
     const changeInputHandler = (event) => {

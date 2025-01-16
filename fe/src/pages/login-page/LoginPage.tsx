@@ -21,9 +21,7 @@ const LoginPage = () => {
 
     const submitHandler = (event) => {
         event.preventDefault()
-        // console.log(userInfo)
-        login()
-        //give a token or smth like that
+        login(userInfo)
 
     }
 
