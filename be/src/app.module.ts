@@ -16,7 +16,7 @@ import { AuthModule } from './auth/auth.module';
       RolesModule,
       SequelizeModule.forRoot({
           dialect: 'postgres',
-          host: 'localhost',
+          host: 'postgres',  // postgres => docker | localhost => npm run start:dev
           port: 5432,
           username: process.env.POSTGRES_USER,
           password: process.env.POSTGRES_PASSWORD,

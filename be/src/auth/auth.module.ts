@@ -11,9 +11,9 @@ import * as process from "process";
   imports: [
       forwardRef(() => UserModule),
       JwtModule.register({
-        secret: process.env.PRIVATE_KEY ?? 'privatekeyexm',
+        secret: process.env.PRIVATE_KEY ?? 'privatekeyexample',
         signOptions: {
-          expiresIn: '24h'
+          expiresIn: '7d'
         }
       })
   ],
