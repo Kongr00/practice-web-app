@@ -7,6 +7,7 @@ import {SequelizeModule} from "@nestjs/sequelize";
 import * as process from "process";
 import {User} from "./user/user.model";
 import { AuthModule } from './auth/auth.module';
+import {Post} from "./post/post.model";
 
 @Module({
   imports: [
@@ -16,12 +17,15 @@ import { AuthModule } from './auth/auth.module';
       RolesModule,
       SequelizeModule.forRoot({
           dialect: 'postgres',
-          host: 'postgres',  // postgres => docker | localhost => npm run start:dev
+          host: 'localhost',  // postgres => docker | localhost => npm run start:dev
           port: 5432,
           username: process.env.POSTGRES_USER,
           password: process.env.POSTGRES_PASSWORD,
           database: process.env.POSTGRES_DATABASE,
-          models: [User],
+          models: [
+              User,
+              Post
+          ],
           autoLoadModels: true,
       }),
       AuthModule,
