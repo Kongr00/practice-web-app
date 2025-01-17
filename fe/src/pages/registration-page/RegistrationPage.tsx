@@ -1,9 +1,12 @@
 import {Link} from "react-router-dom";
 import cls from './registrationPage.module.css'
 import {useState} from "react";
+import DefaultInput, {InputVariant} from "../../components/DefaultInput/DefaultInput.tsx";
+import DefaultButton, {DefaultButtonVariant} from "../../components/DefaultButton/DefaultButton.tsx";
+import {useAuth} from "../../context/AuthContext.tsx";
 
 
-interface UserInfoFields {
+interface RegistrationInfoFields {
     username: string;
     email: string;
     password: string;
@@ -13,24 +16,23 @@ interface UserInfoFields {
 
 const RegistrationPage = () => {
 
-    const [userInfo, setUserInfo] = useState<UserInfoFields>({
+    const [userInfo, setUserInfo] = useState<RegistrationInfoFields>({
         username: "",
         email: "",
         password: "",
         repeatPassword: "",
         sex: false,
     })
+    const {register} = useAuth();
 
     const submitHandler = (event) => {
         event.preventDefault()
-        console.log(userInfo)
-
-        //give a token or smth like that
-
-
+        const {repeatPassword, ...registerData} = userInfo;
+        register(registerData)
     }
 
     const changeInputHandler = (event) => {
+        console.log('pressed from' + event.target.value)
        setUserInfo({
            ...userInfo,
             [event.target.name]: event.target.value
@@ -41,21 +43,47 @@ const RegistrationPage = () => {
         <div className={cls.container}>
             <div>
                 <form action="" onSubmit={submitHandler} className={cls.registerForm}>
-                    <input type="text" name={"username"} value={userInfo?.username} onChange={changeInputHandler}/>
-                    <input type="email" name={"email"} value={userInfo?.email} onChange={changeInputHandler}/>
+                    <DefaultInput
+                        type={InputVariant.TEXT}
+                        name={"username"}
+                        value={userInfo?.username}
+                        onChange={changeInputHandler}
+                        placeholder={"Enter the name"}/>
+                    <DefaultInput
+                        type={InputVariant.EMAIL}
+                        name={"email"}
+                        value={userInfo?.email}
+                        onChange={changeInputHandler}
+                        placeholder={"test-email@gmail.com"}/>
                     <div className={cls.passwordBlock}>
-                        <input type="password" name={"password"} value={userInfo?.password} onChange={changeInputHandler}/>
-                        <input type="password" name={"repeatPassword"} value={userInfo?.repeatPassword} onChange={changeInputHandler}/>
+                        <DefaultInput
+                            type={InputVariant.PASSWORD}
+                            name={"password"}
+                            value={userInfo?.password}
+                            onChange={changeInputHandler}
+                            placeholder={"password..."}
+                           />
+                        <DefaultInput
+                            type={InputVariant.PASSWORD}
+                            name={"repeatPassword"}
+                            value={userInfo?.repeatPassword}
+                            onChange={changeInputHandler}
+                            placeholder={"repeat the password..."}
+                            />
                     </div>
                     <select name="sex" id="sex" value={userInfo?.sex.toString()} onChange={changeInputHandler}>
                         <option value="true">Male</option>
                         <option value="false">Female</option>
                     </select>
 
-                    <button type={'submit'}>SUBMIT</button>
+                    <DefaultButton type={DefaultButtonVariant.SUBMIT}>SIGN UP</DefaultButton>
                 </form>
+                <div className={cls.toLoginPage}>
+                    <p>Already have an account?</p>
+                    <Link to={'/login'}>LOG IN</Link>
+                </div>
             </div>
-            <Link to={'/login'}>LOG IN</Link>
+
         </div>
     );
 };

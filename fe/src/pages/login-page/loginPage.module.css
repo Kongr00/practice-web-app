@@ -10,7 +10,7 @@
         flex-direction: column;
         gap: 10px;
 
-        .registerForm{
+        .loginForm{
             display: flex;
             width: 40vw;
             flex-direction: column;
@@ -35,7 +35,7 @@
                 border: 2px solid wheat;
             }
         }
-        .toLoginPage{
+        .toRegisterPage{
             display: flex;
             gap: 10px;
             justify-content: right;
