@@ -8,6 +8,8 @@ import * as process from "process";
 import {User} from "./user/user.model";
 import { AuthModule } from './auth/auth.module';
 import {Post} from "./post/post.model";
+import { CommentModule } from './comment/comment.module';
+import {Comment} from "./comment/comment.model";
 
 @Module({
   imports: [
@@ -15,6 +17,7 @@ import {Post} from "./post/post.model";
       UserModule,
       PostModule,
       RolesModule,
+      CommentModule,
       SequelizeModule.forRoot({
           dialect: 'postgres',
           host: 'localhost',  // postgres => docker | localhost => npm run start:dev
@@ -24,7 +27,8 @@ import {Post} from "./post/post.model";
           database: process.env.POSTGRES_DATABASE,
           models: [
               User,
-              Post
+              Post,
+              Comment
           ],
           autoLoadModels: true,
       }),
