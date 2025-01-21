@@ -1,9 +1,9 @@
 
 
-export interface NewBoolean{
-    sex : 'male' | 'female';
-}
-export interface DefaultType{
-    user: string
-    sex: boolean | NewBoolean
+export interface Post {
+    id: number,
+    title: string,
+    content: string,
+    category: string,
+    views: number
 }
