@@ -12,16 +12,16 @@ const CategoryPage = () => {
     const [posts, setPosts] = useState<Post[]>([])
 
     const [fetchPost, isLoading, error] = useFetching( async () => {
-        const postResponse = await axios.get<Post[]>(`/api/post/category/${category}`, {
-            headers: getToken()
-        });
-        setPosts(postResponse.data)
+            const postResponse = await axios.get<Post[]>(`/api/post/category/${category}`, {
+                headers: getToken()
+            });
+            setPosts(postResponse.data)
         }
     )
 
     useEffect(() => {
         fetchPost()
-    }, []);
+    }, [category]);
 
     return (
         <div>
