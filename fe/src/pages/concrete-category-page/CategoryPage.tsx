@@ -4,7 +4,8 @@ import {useFetching} from "../../hooks/useFetchig.ts";
 import axios from "axios";
 import {getToken} from "../../utils/getToken.ts";
 import {Post} from "../../types/types.ts";
-
+import PostList from "../../components/PostsList/PostList.tsx";
+import cls from './CategoryPage.module.css'
 
 const CategoryPage = () => {
 
@@ -24,20 +25,15 @@ const CategoryPage = () => {
     }, [category]);
 
     return (
-        <div>
-            Picked category is : {category}
+        <div className={cls.container}>
             {error && <div>{error}</div>}
-            {
-                isLoading
-                    ?  <div>Loading...</div>
-                    : posts.map((post: Post) => (
-                        <div key={post.id}>
-                            <div>Title: {post.title}</div>
-                            <div>Content: {post.content}</div>
-                            <div>Views: {post.views}</div>
-                        </div>
-                    ))
-            }
+            <div className={cls.postArea}>
+                {
+                    isLoading
+                        ?  <div>Loading...</div>
+                        : <PostList posts={posts}/>
+                }
+            </div>
         </div>
     );
 };

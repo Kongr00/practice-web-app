@@ -4,10 +4,7 @@ import {useAuth} from "../../context/AuthContext.tsx";
 
 const PrivateRoute = () => {
 
-    //=============== here must be some logic about verify jwt token ===============
     const {isAuthenticated} = useAuth();
-    //=============== here must be some logic about verify jwt token ===============
-
 
     return (
         isAuthenticated

@@ -1,0 +1,64 @@
+.postBox{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    flex: 1;
+    border-radius: 5px;
+    padding: 15px;
+    box-sizing: border-box;
+    border: 2px solid wheat;
+    cursor: pointer;
+
+    .imageArea{
+        flex: 1;
+        border-radius: 8px;
+        overflow: hidden;
+
+        > img {
+            aspect-ratio: 1/1;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .contentArea{
+        flex: 2;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        .title{
+            font-size: 2rem;
+            font-weight: 900;
+        }
+
+        .article{
+            font-size: 1.5rem;
+            transition: .4s;
+        }
+
+        .postFooter{
+            font-size: 1rem;
+            font-weight: 900;
+            color: rgba(188, 188, 188, 0.56);
+            display: flex;
+            justify-content: right;
+            gap: 20px;
+
+            .categoryLink {
+                transition: color .4s;
+            }
+            .categoryLink:hover{
+                color: #7979ad;
+            }
+        }
+    }
+
+}
+
+.postBox:hover{
+
+    .title {
+        text-decoration: underline;
+    }
+}
