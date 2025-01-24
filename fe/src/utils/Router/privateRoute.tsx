@@ -1,22 +1,22 @@
-import {Navigate, Outlet} from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar.tsx";
-import {useAuth} from "../../context/AuthContext.tsx";
+import { useAuth } from "../../context/AuthContext.tsx";
+import cls from './outlet.module.css';
 
 const PrivateRoute = () => {
-
-    const {isAuthenticated} = useAuth();
+    const { isAuthenticated } = useAuth();
 
     return (
-        isAuthenticated
-            ? <div style={{display: 'flex', flexDirection: "column"}}>
-                <Navbar/>
-                <div style={{textAlign: 'center'}}>
-                    <Outlet/>
+        isAuthenticated ? (
+            <div className={cls.mainContainer}>
+                <Navbar />
+                <div className={cls.outletContainer}>
+                    <Outlet />
                 </div>
             </div>
-
-            :  <Navigate to={'login'}></Navigate>
-
+        ) : (
+            <Navigate to="login" />
+        )
     );
 };
 
