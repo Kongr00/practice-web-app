@@ -14,7 +14,6 @@ const Navbar = () => {
         setPickedCategory(categories[Math.floor(Math.random() * 4)])
     }
     const exitHandler = () => {
-        //some exit logic
         logout();
         console.log("EXITED")
     }

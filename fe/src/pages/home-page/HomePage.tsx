@@ -1,11 +1,10 @@
-import React, {useEffect} from 'react';
-import {useFetching} from "../../hooks/useFetchig.ts";
-
+import React from 'react';
+import cls from './HomePage.module.css'
 const HomePage = () => {
 
 
     return (
-        <div>
+        <div className={cls.container}>
             It works
             <div>
                 Some more txt

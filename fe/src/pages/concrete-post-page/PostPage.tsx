@@ -1,13 +1,13 @@
 import React from 'react';
 import {useParams} from "react-router-dom";
-
-const CategoryPage = () => {
+import cls from './PostPage.module.css'
+const PostPage = () => {
     const { id } = useParams();
     return (
-        <div>
+        <div className={cls.container}>
             Picked news id is : {id}
         </div>
     );
 };
 
-export default CategoryPage;
+export default PostPage;
