@@ -85,6 +85,11 @@ export class CommentService {
                         model: Post,
                         attributes: ['id', 'title']
                     },
+                    {
+                        as: 'author',
+                        model: User,
+                        attributes: ['username', 'email']
+                    }
                 ]
             }
         );

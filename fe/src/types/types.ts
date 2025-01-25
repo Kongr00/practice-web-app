@@ -1,4 +1,8 @@
 
+export interface Author {
+    username: string,
+    email: string,
+}
 
 export interface Post {
     id: number,
@@ -12,7 +16,7 @@ export interface Comment {
     id: number,
     content: string,
     postId: number,
-    authorId: number,
+    author: Author,
     createdAt: string,
     updatedAt: string,
     post: {

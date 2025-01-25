@@ -5,6 +5,7 @@ import {useFetching} from "../../hooks/useFetchig.ts";
 import axios from "axios";
 import {Post, Comment} from "../../types/types.ts";
 import {getToken} from "../../utils/getToken.ts";
+import CommentBlock from "./post-page-ui/CommentBlock.tsx";
 
 const PostPage = () => {
 
@@ -26,6 +27,7 @@ const PostPage = () => {
             const commentResponse = await axios.get<Comment[]>(`/api/comment/by-post-id/${id}`, {
                 headers: getToken()
             });
+            console.log(commentResponse.data)
             setComments(commentResponse.data)
         }
     )
@@ -38,6 +40,7 @@ const PostPage = () => {
 
     return (
         <div className={cls.container}>
+
             {
                 isPostLoading
                     ?  <div>Loading...</div>
@@ -49,18 +52,12 @@ const PostPage = () => {
                     </div>
             }
 
-            <div>
+            <div style={{width: "30%", display: 'flex', flexDirection: 'column', gap: 15}}>
                 {
                     isCommentsLoading
                         ?  <div>Loading...</div>
                         : comments.map((comment) => (
-                            <div key={comment.id}>
-                                <div>id : {comment.id}</div>
-                                <div>content: {comment.content}</div>
-                                <div>post id: {comment.postId}</div>
-                                <div>author id: {comment.authorId}</div>
-                                <div>created at: {comment.createdAt}</div>
-                            </div>
+                            <CommentBlock comment={comment} key={comment.id}/>
                             )
                         )
                 }

@@ -7,6 +7,10 @@
 .outletContainer {
     flex: 1;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background-color: #7979ad;
     color: #262525;
 }

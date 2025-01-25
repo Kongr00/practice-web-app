@@ -28,6 +28,6 @@ export class Comment extends Model<Comment, CommentCreationAttrs> {
     @Column({ type: DataType.INTEGER, allowNull: false })
     authorId: number;
 
-    @BelongsTo(() => User)
+    @BelongsTo(() => User, {as: 'author'})
     user: User;
 }
