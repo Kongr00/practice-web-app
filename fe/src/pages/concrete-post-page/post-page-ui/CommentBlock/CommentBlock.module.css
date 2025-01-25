@@ -37,6 +37,9 @@
             font-size: 0.8rem;
             text-align: left;
             font-weight: 600;
+
+            word-break: break-word;
+            overflow-wrap: break-word;
         }
         .createDate{
             font-weight: 800;
