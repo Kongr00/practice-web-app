@@ -1,5 +1,5 @@
 import React, {FC, useEffect} from 'react';
-import {Comment} from "../../../types/types.ts";
+import {Comment} from "../../../../types/types.ts";
 import cls from './CommentBlock.module.css'
 import { User } from "lucide-react";
 interface CommentBlockProps {

@@ -5,7 +5,8 @@ import {useFetching} from "../../hooks/useFetchig.ts";
 import axios from "axios";
 import {Post, Comment} from "../../types/types.ts";
 import {getToken} from "../../utils/getToken.ts";
-import CommentBlock from "./post-page-ui/CommentBlock.tsx";
+import CommentBlock from "./post-page-ui/CommentBlock/CommentBlock.tsx";
+import CommentList from "./post-page-ui/CommentList/CommentList.tsx";
 
 const PostPage = () => {
 
@@ -40,29 +41,29 @@ const PostPage = () => {
 
     return (
         <div className={cls.container}>
-
-            {
-                isPostLoading
-                    ?  <div>Loading...</div>
-                    : <div>
-                        <div>{post?.id}</div>
-                        <div>{post?.category}</div>
-                        <div>{post?.title}</div>
-                        <div>{post?.content}</div>
-                    </div>
-            }
-
-            <div style={{width: "30%", display: 'flex', flexDirection: 'column', gap: 15}}>
+            <div className={cls.postArea}>
                 {
-                    isCommentsLoading
+                    isPostLoading
                         ?  <div>Loading...</div>
-                        : comments.map((comment) => (
-                            <CommentBlock comment={comment} key={comment.id}/>
-                            )
-                        )
+                        : <div>
+                            <div className={cls.postPhoto}>
+                                PHOTO
+                            </div>
+                            <div className={cls.postContent}>
+                                <div className={cls.title}>{post?.title}</div>
+                                <div className={cls.content}>{post?.content}</div>
+                                <div className={cls.category}>{post?.category}</div>
+                            </div>
+
+                        </div>
                 }
             </div>
-
+            <div className={cls.commentsListArea}>
+                <CommentList
+                    comments={comments}
+                    isCommentsLoading={isCommentsLoading}
+                />
+            </div>
         </div>
     );
 };

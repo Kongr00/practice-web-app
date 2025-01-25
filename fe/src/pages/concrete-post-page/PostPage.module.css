@@ -1,9 +1,66 @@
 .container {
     display: flex;
     flex-direction: row;
-    gap: 50px;
+    gap: 20px;
     justify-content: center;
     align-items: center;
-    flex: 1;
     color: #181818;
+    width: 90vw;
+    border-radius: 8px;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: #c2c3ee;
+
+
+    .postArea {
+        flex: 2;
+        height: 60vh;
+        float: left;
+        > div{
+            height: 100%;
+            border-radius: 12px;
+            background-color: #9c9c9c;
+            padding: 15px;
+            box-sizing: border-box;
+            float: left;
+
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            .postPhoto {
+                flex: 1;
+                aspect-ratio: 2/1;
+                background-color: #c2c3ee;
+                box-shadow: 5px 5px 10px 0px black;
+                border-radius: 12px;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                font-size: 3rem;
+                font-family: monospace;
+            }
+            .postContent {
+                text-align: left;
+                .title{
+                    font-weight: 800;
+                    font-size: 1.5rem;
+                }
+                .content{
+                    font-size: 1rem;
+                }
+                .category{
+                    font-size: 0.7rem;
+                    font-weight: 800;
+                }
+            }
+        }
+    }
+    .commentsListArea{
+        flex: 1;
+        max-height: 60vh;
+        overflow: scroll;
+        scrollbar-width: none;
+    }
 }
