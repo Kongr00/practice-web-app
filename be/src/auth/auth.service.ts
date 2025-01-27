@@ -21,7 +21,7 @@ export class AuthService {
     async register(userDto: CreateUserDto) {
         const candidate = await this.userService.getUserByEmail(userDto.email)
         if (candidate){
-            throw new HttpException(`User with email ${userDto.email} is already exist`, HttpStatus.BAD_REQUEST)
+                throw new HttpException(`User with email ${userDto.email} is already exist`, HttpStatus.BAD_REQUEST)
         }
         const hashedPassword = await hash(userDto.password, 5);
         const user = await this.userService.createUser({...userDto, password: hashedPassword})
@@ -50,7 +50,6 @@ export class AuthService {
         }
         catch (e) {
             throw new UnauthorizedException({message: 'Incorrect email or password, try again'})
-
         }
 
     }

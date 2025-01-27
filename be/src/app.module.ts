@@ -20,7 +20,7 @@ import {Comment} from "./comment/comment.model";
       CommentModule,
       SequelizeModule.forRoot({
           dialect: 'postgres',
-          host: 'localhost',  // postgres => docker | localhost => npm run start:dev
+          host: 'postgres',  // postgres => docker | localhost => npm run start:dev
           port: 5432,
           username: process.env.POSTGRES_USER,
           password: process.env.POSTGRES_PASSWORD,

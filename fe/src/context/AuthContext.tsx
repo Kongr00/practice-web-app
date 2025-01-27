@@ -1,6 +1,7 @@
 import React, {createContext, useContext, useEffect, useState} from 'react';
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
+import {getToken} from "../utils/getToken.ts";
 
 interface LoginProps {
     email: string
@@ -30,7 +31,7 @@ export const AuthProvider = ({children}) => {
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (token) {
-            axios.get('/api/user', { headers: getAuthHeader() })
+            axios.get('/api/user', { headers: getToken() })
                 .then(() => {
                     setIsAuthenticated(true)
                     navigate('home')
@@ -72,10 +73,6 @@ export const AuthProvider = ({children}) => {
         localStorage.removeItem('token')
     }
 
-    function getAuthHeader() {
-        const token = localStorage.getItem('token');
-        return token ? { Authorization: `Bearer ${token}` } : {};
-    }
 
     return (
         <AuthContext.Provider value={{isAuthenticated, login, logout, register}}>

@@ -6,8 +6,8 @@ import PrivateRoute from "./utils/Router/privateRoute.tsx";
 import ProfilePage from "./pages/profile-page/ProfilePage.tsx";
 import CategoryPage from "./pages/concrete-category-page/CategoryPage.tsx";
 import RegistrationPage from "./pages/registration-page/RegistrationPage.tsx";
-import NewsPage from "./pages/concrete-news-page/NewsPage.tsx";
 import {AuthProvider} from "./context/AuthContext.tsx";
+import PostPage from "./pages/concrete-post-page/PostPage.tsx";
 
 function App() {
 
@@ -19,7 +19,7 @@ function App() {
                    <Route path={'home'} element={<HomePage/>} />
                    <Route path={'profile'} element={<ProfilePage/>} />
                    <Route path={'category/:category'} element={<CategoryPage/>} />
-                   <Route path={'news/:id'} element={<NewsPage/>} />
+                   <Route path={'post/:id'} element={<PostPage/>} />
                </Route>
                <Route path={'/login'} element={<LoginPage/>} />
                <Route path={'/register'} element={<RegistrationPage/>} />
