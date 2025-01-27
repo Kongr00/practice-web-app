@@ -1,12 +1,14 @@
 .postBox{
     display: flex;
     flex-direction: row;
-    gap: 30px;
+    gap: 5px;
     flex: 1;
-    border-radius: 5px;
+    border-radius: 12px;
     padding: 15px;
     box-sizing: border-box;
-    border: 3px solid #262525;
+    background-color: #c2c3ee;
+    box-shadow: 0px 10px 10px 0px black;
+    color: black;
 
     .imageArea{
         flex: 1;
@@ -15,9 +17,9 @@
         align-items: center;
 
         > img {
-            aspect-ratio: 3/2;
+            aspect-ratio: 1/1;
             width: 90%;
-
+            border-radius: 12px;
         }
     }
 
@@ -28,6 +30,11 @@
         justify-content: space-between;
         text-align: left;
         gap: 8px;
+        padding: 10px;
+        box-sizing: border-box;
+        border-radius: 12px;
+        background-color: #9c9c9c;
+
 
         .title{
             font-size: 2rem;
@@ -44,7 +51,7 @@
         .postFooter{
             font-size: 1rem;
             font-weight: 900;
-            color: rgba(188, 188, 188, 0.81);
+            color: #bbbbbb;
             display: flex;
             justify-content: right;
             gap: 20px;
