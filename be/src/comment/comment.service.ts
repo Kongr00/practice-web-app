@@ -94,4 +94,18 @@ export class CommentService {
             }
         );
     }
+
+    async findAllByUserId(id: number) {
+        const userCandidate = await this.userRepository.findOne({where: { id: id } });
+
+        if (!userCandidate) {
+            throw new HttpException(`User with id "${id}" not found`, 404);
+        }
+
+        return await this.commentRepository.findAll(
+            {
+                where: { authorId : id },
+            }
+        );
+    }
 }
