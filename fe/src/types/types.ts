@@ -24,3 +24,11 @@ export interface Comment {
         title: string
     }
 }
+
+export interface User {
+    id: number,
+    username: string,
+    email: string,
+    password: string,
+    sex: boolean
+}

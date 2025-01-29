@@ -26,6 +26,12 @@ export class CommentController {
   }
 
   @UseGuards(JwtAuthGuard)
+  @Get('by-user-id/:id')
+  findAllByUserId(@Param('id') id: string) {
+    return this.commentService.findAllByUserId(+id)
+  }
+
+  @UseGuards(JwtAuthGuard)
   @Get('by-post-id/:id')
   getAllCommentByPostId(@Param('id') id: string) {
     return this.commentService.getAllCommentByPostId(+id)

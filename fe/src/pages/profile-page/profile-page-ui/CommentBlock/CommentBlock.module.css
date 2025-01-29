@@ -9,10 +9,11 @@
     box-shadow: 0px 10px 10px 0px black;
     gap: 10px;
     max-height: 120px;
+    transition: .3s;
+    cursor: pointer;
 
     .photoBlock{
         flex: 1;
-        height: 100%;
         aspect-ratio: 1/1;
         display: flex;
         border-radius: 12px;
@@ -26,7 +27,6 @@
         flex-direction: column;
         justify-content: space-between;
         align-items: start;
-
 
         .author{
             font-weight: 800;
@@ -49,4 +49,8 @@
             justify-content: right;
         }
     }
+}
+
+.commentBlock:hover{
+    outline: 2px solid white;
 }
