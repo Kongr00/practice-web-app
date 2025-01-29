@@ -3,14 +3,19 @@ import {Comment} from "../../../../types/types.ts";
 import cls from './CommentBlock.module.css'
 import { User } from "lucide-react";
 import dayjs from "dayjs";
+import {replace, useNavigate} from "react-router-dom";
 interface CommentBlockProps {
     comment: Comment
 }
 const CommentBlock: FC<CommentBlockProps> = ({comment}) => {
 
+    const navigate = useNavigate();
 
     return (
-        <div className={cls.commentBlock}>
+        <div
+            className={cls.commentBlock}
+            onClick={() => navigate(`/post/${comment.postId}`, {replace: true})}
+        >
             <div className={cls.photoBlock}>
                 <User size={32} color={'#000'}/>
             </div>

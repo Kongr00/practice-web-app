@@ -105,6 +105,17 @@ export class CommentService {
         return await this.commentRepository.findAll(
             {
                 where: { authorId : id },
+                include : [
+                    {
+                        model: Post,
+                        attributes: ['id', 'title']
+                    },
+                    {
+                        as: 'author',
+                        model: User,
+                        attributes: ['username', 'email']
+                    }
+                ]
             }
         );
     }

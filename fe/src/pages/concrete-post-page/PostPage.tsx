@@ -43,13 +43,13 @@ const PostPage = () => {
     }, []);
 
     const handleSendComment = async () => {
-        const decoded = jwtDecode(localStorage.getItem('token'));
+        const userInfo = jwtDecode(localStorage.getItem('token'));
 
         const sendCommentResponse = await axios.post(`/api/comment`,
             {
                 content: commentInput,
                 postId: id,
-                authorId: decoded.id
+                authorId: userInfo.id
             },
             {
                 headers: getToken(),
